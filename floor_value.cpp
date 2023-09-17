@@ -1,18 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
-int floor(int arr[],int low,int high,int value)
+#define ll long  long int
+ll floor_value(ll arr[],int n,ll target)
 {
-    int mid;
-    int ans =0;
+    int low = 0;
+    int high = n-1;
+    ll ans=-1 ;
     while(low<=high)
     {
-        mid = (high+low)/2;
-        
-        if(arr[mid]==value)
-        {
-            return value;
-        }
-        else if(arr[mid]<value)
+        int mid = low+(high-low)/2;
+        if(arr[mid]<=target)
         {
             ans = arr[mid];
             low = mid+1;
@@ -28,14 +25,12 @@ int main()
 {
     int n;
     cin>>n;
-    int arr[n+3];
+    ll arr[n+2];
     for(int i=0;i<n;i++)
     {
         cin>>arr[i];
     }
     sort(arr,arr+n);
-    int value;
-    cin>>value;
-    int floor_value = floor(arr,0,n-1,value);
-    cout<<floor_value<<endl;
+    ll ans = floor_value(arr,n,25);
+    cout<<ans<<endl;
 }
